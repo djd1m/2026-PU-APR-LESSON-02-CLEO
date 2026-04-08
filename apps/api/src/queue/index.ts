@@ -1,6 +1,6 @@
 import { Queue, Worker } from 'bullmq';
 import IORedis from 'ioredis';
-import { processAnalyzeJob, type AnalyzeJobData } from './jobs.js';
+import { processAnalyzeJob, type AnalyzeJobData } from './jobs';
 
 const REDIS_URL = process.env.REDIS_URL || 'redis://localhost:6379';
 
@@ -41,3 +41,7 @@ analysisWorker.on('failed', (job, err) => {
 analysisWorker.on('completed', (job) => {
   console.log(`[worker] Job ${job.id} completed successfully`);
 });
+
+export function startAnalysisWorker() {
+  console.log('[worker] Analysis worker started, concurrency: 3');
+}

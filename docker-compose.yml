@@ -39,7 +39,7 @@ services:
     build:
       context: .
       dockerfile: apps/api/Dockerfile
-    command: ["node", "dist/worker.js"]
+    command: ["npx", "tsx", "src/worker.ts"]
     environment:
       - DATABASE_URL=postgresql://cleorf:${DB_PASSWORD:-devpass}@postgres:5432/cleorf
       - REDIS_URL=redis://redis:6379

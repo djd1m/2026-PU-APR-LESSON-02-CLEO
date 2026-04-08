@@ -3,14 +3,14 @@ config({ path: '../../.env' });
 
 import express from 'express';
 import cors from 'cors';
-import { authRouter } from './routes/auth.js';
-import { uploadRouter } from './routes/upload.js';
-import { analysisRouter } from './routes/analysis.js';
-import { roastRouter } from './routes/roast.js';
-import { shareRouter } from './routes/share.js';
-import { subscriptionRouter } from './routes/subscription.js';
-import { goalsRouter } from './routes/goals.js';
-import { errorHandler } from './middleware/error-handler.js';
+import { authRouter } from './routes/auth';
+import { uploadRouter } from './routes/upload';
+import { analysisRouter } from './routes/analysis';
+import { roastRouter } from './routes/roast';
+import { shareRouter } from './routes/share';
+import { subscriptionRouter } from './routes/subscription';
+import { goalsRouter } from './routes/goals';
+import { errorHandler } from './middleware/error-handler';
 
 const app = express();
 const PORT = parseInt(process.env.PORT || '4000', 10);

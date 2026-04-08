@@ -1,6 +1,6 @@
 import OpenAI from 'openai';
 import { SPENDING_CATEGORIES } from '@cleo-rf/shared';
-import type { ParsedTransaction } from './csv-parser.js';
+import type { ParsedTransaction } from './csv-parser';
 
 export interface CategorizedTransaction extends ParsedTransaction {
   category: string;

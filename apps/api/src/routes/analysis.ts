@@ -30,8 +30,9 @@ analysisRouter.get(
       if (upload.status !== 'complete') {
         res.status(202).json({
           data: {
+            id: uploadId,
             upload_id: uploadId,
-            status: upload.status,
+            status: upload.status === 'error' ? 'error' : 'processing',
             message: upload.status === 'error'
               ? 'Analysis failed, please try re-uploading'
               : 'Analysis is still processing',
@@ -57,11 +58,13 @@ analysisRouter.get(
         data: {
           id: analysis.id,
           upload_id: analysis.uploadId,
-          total_income: Number(analysis.totalIncome),
-          total_expense: Number(analysis.totalExpense),
+          status: 'completed',
+          totalSpent: Number(analysis.totalExpense),
+          totalIncome: Number(analysis.totalIncome),
           categories: analysis.categories,
           subscriptions: analysis.subscriptions,
-          roast_text: analysis.roastText,
+          roastMessage: analysis.roastText || '',
+          roastStyle: 'roast',
           recommendations: analysis.recommendations,
           created_at: analysis.createdAt.toISOString(),
         },
