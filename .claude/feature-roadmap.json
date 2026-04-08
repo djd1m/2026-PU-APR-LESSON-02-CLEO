@@ -96,8 +96,8 @@
       "id": "savings-goals",
       "name": "Savings Goals",
       "description": "Set and track savings goals with progress visualization",
-      "status": "next",
-      "files": [],
+      "status": "done",
+      "files": ["packages/db/src/schema/savings-goals.ts", "apps/api/src/routes/goals.ts", "apps/web/app/goals/page.tsx", "apps/web/components/charts/goal-progress.tsx"],
       "depends_on": ["spending-dashboard"],
       "sprint": "v1.0"
     },

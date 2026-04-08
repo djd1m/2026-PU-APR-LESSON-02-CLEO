@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import { authRouter } from './routes/auth.js';
@@ -6,6 +7,7 @@ import { analysisRouter } from './routes/analysis.js';
 import { roastRouter } from './routes/roast.js';
 import { shareRouter } from './routes/share.js';
 import { subscriptionRouter } from './routes/subscription.js';
+import { goalsRouter } from './routes/goals.js';
 import { errorHandler } from './middleware/error-handler.js';
 
 const app = express();
@@ -33,6 +35,7 @@ app.use('/api/analysis', analysisRouter);
 app.use('/api/roast', roastRouter);
 app.use('/api/share', shareRouter);
 app.use('/api/subscription', subscriptionRouter);
+app.use('/api/goals', goalsRouter);
 
 app.use(errorHandler);
 
