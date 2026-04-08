@@ -16,8 +16,11 @@ Combines `/start`, `/next`, and `/go` into a single continuous pipeline.
 > - MUST create 1 plan per feature, 1 validation per feature, 1 commit per feature
 > - NEVER batch features into parallel waves without individual plans
 > - NEVER skip the /next -> /go pipeline by launching raw implementation agents
+> - NEVER mark a feature as "done" without running /go (even if code exists from /start scaffold)
+> - CRITICAL: /go MUST produce per-feature docs (docs/plans/ or docs/features/<name>/sparc/) — no exceptions
 > - CRITICAL: If a feature fails 3 times, skip it and log — NEVER retry indefinitely
 > - MUST push state after each feature completion (independent commits)
+> - MUST push git after EACH feature is done (not at the end of all features)
 
 ## Step 0: Parse Scope
 

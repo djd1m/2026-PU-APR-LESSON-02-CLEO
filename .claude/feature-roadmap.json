@@ -1,6 +1,6 @@
 {
   "project": "cleo-rf",
-  "current_sprint": "MVP",
+  "current_sprint": "v1.0",
   "features": [
     {
       "id": "csv-upload",
@@ -78,7 +78,7 @@
       "id": "pro-subscription",
       "name": "Pro Subscription (499 RUB/mo)",
       "description": "Payment integration, plan management, unlimited roasts for Pro",
-      "status": "planned",
+      "status": "next",
       "files": ["apps/api/src/routes/subscription.ts"],
       "depends_on": ["roast-mode"],
       "sprint": "v1.0"
@@ -87,7 +87,7 @@
       "id": "weekly-report",
       "name": "Weekly Report",
       "description": "Email/push weekly spending summary with roast",
-      "status": "planned",
+      "status": "next",
       "files": [],
       "depends_on": ["ai-analysis", "roast-mode"],
       "sprint": "v1.0"
@@ -96,7 +96,7 @@
       "id": "savings-goals",
       "name": "Savings Goals",
       "description": "Set and track savings goals with progress visualization",
-      "status": "planned",
+      "status": "next",
       "files": [],
       "depends_on": ["spending-dashboard"],
       "sprint": "v1.0"
@@ -105,7 +105,7 @@
       "id": "hype-mode",
       "name": "Hype Mode",
       "description": "Positive encouragement mode as alternative to roast",
-      "status": "planned",
+      "status": "next",
       "files": [],
       "depends_on": ["roast-mode"],
       "sprint": "v1.0"
