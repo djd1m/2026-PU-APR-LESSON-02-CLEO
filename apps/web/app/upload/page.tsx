@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Flame, ArrowLeft } from 'lucide-react';
@@ -18,6 +18,13 @@ export default function UploadPage() {
   const [uploading, setUploading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [error, setError] = useState('');
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      router.push('/login');
+    }
+  }, [router]);
 
   async function handleUpload(file: File) {
     setError('');
@@ -49,7 +56,7 @@ export default function UploadPage() {
 
       // Brief pause to show 100%, then redirect
       setTimeout(() => {
-        router.push(`/analysis/${result.data!.uploadId}`);
+        router.push(`/analysis/${result.data!.upload_id}`);
       }, 500);
     } catch {
       clearInterval(progressInterval);

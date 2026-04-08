@@ -1,4 +1,4 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || '';
 
 // ─── Types ───────────────────────────────────────────────────────────
 
@@ -17,7 +17,7 @@ export interface AuthResponse {
 }
 
 export interface UploadResponse {
-  uploadId: string;
+  upload_id: string;
 }
 
 export interface CategoryBreakdown {
@@ -90,8 +90,8 @@ export async function apiGet<T>(path: string): Promise<ApiResponse<T>> {
       return { error: body.message || `Ошибка ${res.status}` };
     }
 
-    const data = await res.json();
-    return { data };
+    const json = await res.json();
+    return { data: json.data ?? json };
   } catch (err) {
     return { error: err instanceof Error ? err.message : 'Неизвестная ошибка' };
   }
@@ -109,12 +109,12 @@ export async function apiPost<T>(
     });
 
     if (!res.ok) {
-      const data = await res.json().catch(() => ({}));
-      return { error: data.message || `Ошибка ${res.status}` };
+      const json = await res.json().catch(() => ({}));
+      return { error: json.error?.message || json.message || `Ошибка ${res.status}` };
     }
 
-    const data = await res.json();
-    return { data };
+    const json = await res.json();
+    return { data: json.data ?? json };
   } catch (err) {
     return { error: err instanceof Error ? err.message : 'Неизвестная ошибка' };
   }
@@ -161,12 +161,12 @@ export async function uploadCsv(file: File): Promise<ApiResponse<UploadResponse>
     });
 
     if (!res.ok) {
-      const data = await res.json().catch(() => ({}));
-      return { error: data.message || `Ошибка ${res.status}` };
+      const json = await res.json().catch(() => ({}));
+      return { error: json.error?.message || json.message || `Ошибка ${res.status}` };
     }
 
-    const data = await res.json();
-    return { data };
+    const json = await res.json();
+    return { data: json.data ?? json };
   } catch (err) {
     return { error: err instanceof Error ? err.message : 'Неизвестная ошибка' };
   }

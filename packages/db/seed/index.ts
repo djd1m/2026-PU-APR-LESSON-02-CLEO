@@ -1,5 +1,6 @@
 import { db, schema } from '../src/index.js';
 import { randomUUID } from 'crypto';
+import { hashSync } from 'bcryptjs';
 
 async function seed() {
   console.log('Seeding database...');
@@ -8,6 +9,7 @@ async function seed() {
     id: randomUUID(),
     email: 'test@cleorf.app',
     name: 'Тестовый Пользователь',
+    passwordHash: hashSync('test123456', 12),
     age: 22,
     plan: 'free',
     roastsToday: 0,
