@@ -87,8 +87,8 @@
       "id": "weekly-report",
       "name": "Weekly Report",
       "description": "Email/push weekly spending summary with roast",
-      "status": "next",
-      "files": [],
+      "status": "done",
+      "files": ["apps/api/src/services/weekly-report.ts", "apps/api/src/queue/weekly-report-job.ts", "apps/api/src/routes/settings.ts"],
       "depends_on": ["ai-analysis", "roast-mode"],
       "sprint": "v1.0"
     },
