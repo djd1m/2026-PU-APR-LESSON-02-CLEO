@@ -1,0 +1,33 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 .claude/hooks/feature-context.py 2>/dev/null || true",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'DIR=\"myinsights\"; if [ -d \"$DIR\" ] && (git diff --name-only -- \"$DIR\" 2>/dev/null | grep -q . || git ls-files --others --exclude-standard -- \"$DIR\" 2>/dev/null | grep -q .); then git add \"$DIR\" && git commit -m \"docs(insights): update knowledge base\" 2>/dev/null; echo \"myinsights/ auto-committed\"; fi'"
+          },
+          {
+            "type": "command",
+            "command": "bash -c 'if [ -f \".claude/feature-roadmap.json\" ] && git diff --name-only -- \".claude/feature-roadmap.json\" 2>/dev/null | grep -q .; then git add .claude/feature-roadmap.json && git commit -m \"docs(roadmap): update feature status\" 2>/dev/null; echo \"feature-roadmap.json auto-committed\"; fi'"
+          },
+          {
+            "type": "command",
+            "command": "bash -c 'DIR=\"docs/plans\"; if [ -d \"$DIR\" ] && (git diff --name-only -- \"$DIR\" 2>/dev/null | grep -q . || git ls-files --others --exclude-standard -- \"$DIR\" 2>/dev/null | grep -q .); then git add \"$DIR\" && git commit -m \"docs(plans): update implementation plans\" 2>/dev/null; echo \"docs/plans/ auto-committed\"; fi'"
+          }
+        ]
+      }
+    ]
+  }
+}

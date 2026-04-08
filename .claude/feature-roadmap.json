@@ -1,0 +1,114 @@
+{
+  "project": "cleo-rf",
+  "current_sprint": "MVP",
+  "features": [
+    {
+      "id": "csv-upload",
+      "name": "CSV Upload & Parsing",
+      "description": "Multi-format CSV parser (Sberbank, Tinkoff, Alfa) with auto-detect encoding/delimiter/bank",
+      "status": "next",
+      "files": ["apps/api/src/services/csv-parser.ts", "apps/api/src/routes/upload.ts", "apps/web/app/upload/page.tsx"],
+      "depends_on": [],
+      "sprint": "MVP"
+    },
+    {
+      "id": "user-auth",
+      "name": "User Authentication",
+      "description": "Email + Telegram auth with JWT, bcrypt, rate limiting",
+      "status": "next",
+      "files": ["apps/api/src/routes/auth.ts", "apps/api/src/middleware/auth.ts", "apps/web/app/(auth)/"],
+      "depends_on": [],
+      "sprint": "MVP"
+    },
+    {
+      "id": "ai-analysis",
+      "name": "AI Spending Analysis",
+      "description": "AI-powered transaction categorization, top-5 categories, totals",
+      "status": "next",
+      "files": ["apps/api/src/services/categorizer.ts", "apps/api/src/queue/jobs.ts"],
+      "depends_on": ["csv-upload"],
+      "sprint": "MVP"
+    },
+    {
+      "id": "roast-mode",
+      "name": "Roast Mode",
+      "description": "AI-generated humorous spending critique with rate limiting (1/day free, unlimited Pro)",
+      "status": "planned",
+      "files": ["apps/api/src/routes/roast.ts", "apps/web/components/chat/roast-message.tsx"],
+      "depends_on": ["ai-analysis"],
+      "sprint": "MVP"
+    },
+    {
+      "id": "subscription-detection",
+      "name": "Subscription Detection",
+      "description": "Detect recurring payments, flag parasites (unused 30+ days), calculate totals",
+      "status": "planned",
+      "files": ["apps/api/src/services/subscription-detector.ts"],
+      "depends_on": ["csv-upload"],
+      "sprint": "MVP"
+    },
+    {
+      "id": "share-card",
+      "name": "Share Card Generation",
+      "description": "Privacy-safe roast share cards with blurred amounts and referral links",
+      "status": "planned",
+      "files": ["apps/api/src/routes/share.ts", "apps/web/components/share/share-card-preview.tsx"],
+      "depends_on": ["roast-mode"],
+      "sprint": "MVP"
+    },
+    {
+      "id": "spending-dashboard",
+      "name": "Spending Dashboard",
+      "description": "Pie chart by category, bar chart daily spending, month-over-month trends",
+      "status": "planned",
+      "files": ["apps/web/app/dashboard/page.tsx", "apps/web/components/charts/category-pie.tsx"],
+      "depends_on": ["ai-analysis"],
+      "sprint": "MVP"
+    },
+    {
+      "id": "savings-recommendations",
+      "name": "Savings Recommendations",
+      "description": "AI-generated personalized savings tips with estimated amounts",
+      "status": "planned",
+      "files": ["apps/api/src/routes/analysis.ts"],
+      "depends_on": ["ai-analysis", "subscription-detection"],
+      "sprint": "MVP"
+    },
+    {
+      "id": "pro-subscription",
+      "name": "Pro Subscription (499 RUB/mo)",
+      "description": "Payment integration, plan management, unlimited roasts for Pro",
+      "status": "planned",
+      "files": ["apps/api/src/routes/subscription.ts"],
+      "depends_on": ["roast-mode"],
+      "sprint": "v1.0"
+    },
+    {
+      "id": "weekly-report",
+      "name": "Weekly Report",
+      "description": "Email/push weekly spending summary with roast",
+      "status": "planned",
+      "files": [],
+      "depends_on": ["ai-analysis", "roast-mode"],
+      "sprint": "v1.0"
+    },
+    {
+      "id": "savings-goals",
+      "name": "Savings Goals",
+      "description": "Set and track savings goals with progress visualization",
+      "status": "planned",
+      "files": [],
+      "depends_on": ["spending-dashboard"],
+      "sprint": "v1.0"
+    },
+    {
+      "id": "hype-mode",
+      "name": "Hype Mode",
+      "description": "Positive encouragement mode as alternative to roast",
+      "status": "planned",
+      "files": [],
+      "depends_on": ["roast-mode"],
+      "sprint": "v1.0"
+    }
+  ]
+}
