@@ -179,9 +179,10 @@ export async function getAnalysis(
 }
 
 export async function requestRoast(
-  analysisId: string
+  analysisId: string,
+  style: 'roast' | 'hype' = 'roast'
 ): Promise<ApiResponse<RoastResponse>> {
-  return apiPost<RoastResponse>(`/api/analysis/${analysisId}/roast`);
+  return apiPost<RoastResponse>('/api/roast', { analysis_id: analysisId, style });
 }
 
 export async function generateShareCard(

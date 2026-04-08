@@ -116,8 +116,8 @@ roastRouter.post(
 
       res.json({
         data: {
-          roast_text: roastText,
-          style,
+          roastMessage: roastText,
+          roastStyle: style,
           analysis_id,
         },
       });

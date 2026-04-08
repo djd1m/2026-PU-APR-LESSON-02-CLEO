@@ -82,7 +82,7 @@ export default function AnalysisPage({ params }: { params: Promise<{ id: string 
   async function handleReRoast() {
     setReRoasting(true);
     try {
-      const result = await requestRoast(id);
+      const result = await requestRoast(id, currentStyle);
       if (result.data) {
         setData((prev) =>
           prev
