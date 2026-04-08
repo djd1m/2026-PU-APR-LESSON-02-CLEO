@@ -105,8 +105,8 @@
       "id": "hype-mode",
       "name": "Hype Mode",
       "description": "Positive encouragement mode as alternative to roast",
-      "status": "next",
-      "files": [],
+      "status": "done",
+      "files": ["apps/api/src/prompts/roast.ts", "apps/web/app/analysis/[id]/page.tsx", "apps/web/components/chat/roast-message.tsx"],
       "depends_on": ["roast-mode"],
       "sprint": "v1.0"
     }

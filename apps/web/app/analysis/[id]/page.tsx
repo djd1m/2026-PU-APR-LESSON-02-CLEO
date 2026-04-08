@@ -2,7 +2,7 @@
 
 import { useState, useEffect, use } from 'react';
 import Link from 'next/link';
-import { Flame, Share2, RefreshCw, ArrowLeft } from 'lucide-react';
+import { Flame, Share2, RefreshCw, ArrowLeft, Sparkles } from 'lucide-react';
 import { getAnalysis, requestRoast } from '@/lib/api';
 import { RoastMessage } from '@/components/chat/roast-message';
 import { CategoryPie } from '@/components/charts/category-pie';
@@ -44,6 +44,7 @@ export default function AnalysisPage({ params }: { params: Promise<{ id: string 
   const [loading, setLoading] = useState(true);
   const [showShare, setShowShare] = useState(false);
   const [reRoasting, setReRoasting] = useState(false);
+  const [currentStyle, setCurrentStyle] = useState<'roast' | 'hype'>('roast');
 
   useEffect(() => {
     let interval: ReturnType<typeof setInterval>;
@@ -143,15 +144,47 @@ export default function AnalysisPage({ params }: { params: Promise<{ id: string 
           <RoastMessage message={data.roastMessage} style={data.roastStyle} />
         </div>
 
+        {/* Style Toggle */}
+        <div className="mb-6 flex justify-center">
+          <div className="inline-flex rounded-xl border border-slate-700 bg-slate-800/50 p-1">
+            <button
+              onClick={() => setCurrentStyle('roast')}
+              className={`inline-flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium transition ${
+                currentStyle === 'roast'
+                  ? 'bg-rose-500/20 text-rose-300'
+                  : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <Flame className="h-4 w-4" />
+              Roast
+            </button>
+            <button
+              onClick={() => setCurrentStyle('hype')}
+              className={`inline-flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium transition ${
+                currentStyle === 'hype'
+                  ? 'bg-emerald-500/20 text-emerald-300'
+                  : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <Sparkles className="h-4 w-4" />
+              Hype
+            </button>
+          </div>
+        </div>
+
         {/* Actions */}
         <div className="mb-12 flex flex-wrap justify-center gap-4">
           <button
             onClick={handleReRoast}
             disabled={reRoasting}
-            className="inline-flex items-center gap-2 rounded-xl border border-rose-500/30 bg-rose-500/10 px-5 py-2.5 text-sm font-medium text-rose-300 transition hover:bg-rose-500/20 disabled:opacity-50"
+            className={`inline-flex items-center gap-2 rounded-xl border px-5 py-2.5 text-sm font-medium transition disabled:opacity-50 ${
+              currentStyle === 'roast'
+                ? 'border-rose-500/30 bg-rose-500/10 text-rose-300 hover:bg-rose-500/20'
+                : 'border-emerald-500/30 bg-emerald-500/10 text-emerald-300 hover:bg-emerald-500/20'
+            }`}
           >
             <RefreshCw className={`h-4 w-4 ${reRoasting ? 'animate-spin' : ''}`} />
-            {reRoasting ? 'Генерируем...' : 'Получить ещё один roast'}
+            {reRoasting ? 'Генерируем...' : currentStyle === 'roast' ? 'Ещё один roast' : 'Ещё один hype'}
           </button>
           <button
             onClick={() => setShowShare(!showShare)}
