@@ -47,6 +47,14 @@ export default function AnalysisPage({ params }: { params: Promise<{ id: string 
   const [currentStyle, setCurrentStyle] = useState<'roast' | 'hype'>('roast');
 
   useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      window.location.href = '/login';
+      return;
+    }
+  }, []);
+
+  useEffect(() => {
     let interval: ReturnType<typeof setInterval>;
 
     async function fetchAnalysis() {

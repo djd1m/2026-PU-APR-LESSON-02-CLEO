@@ -78,8 +78,8 @@
       "id": "pro-subscription",
       "name": "Pro Subscription (499 RUB/mo)",
       "description": "Payment integration, plan management, unlimited roasts for Pro",
-      "status": "next",
-      "files": ["apps/api/src/routes/subscription.ts"],
+      "status": "done",
+      "files": ["apps/api/src/routes/subscription.ts", "apps/api/src/services/payment.ts", "apps/api/src/middleware/check-pro.ts"],
       "depends_on": ["roast-mode"],
       "sprint": "v1.0"
     },

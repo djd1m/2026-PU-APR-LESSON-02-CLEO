@@ -5,6 +5,7 @@ import { uploadRouter } from './routes/upload.js';
 import { analysisRouter } from './routes/analysis.js';
 import { roastRouter } from './routes/roast.js';
 import { shareRouter } from './routes/share.js';
+import { subscriptionRouter } from './routes/subscription.js';
 import { errorHandler } from './middleware/error-handler.js';
 
 const app = express();
@@ -31,6 +32,7 @@ app.use('/api/upload', uploadRouter);
 app.use('/api/analysis', analysisRouter);
 app.use('/api/roast', roastRouter);
 app.use('/api/share', shareRouter);
+app.use('/api/subscription', subscriptionRouter);
 
 app.use(errorHandler);
 
