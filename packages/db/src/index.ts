@@ -1,6 +1,6 @@
 import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
-import * as schema from './schema/index.js';
+import * as schema from './schema/index';
 
 const connectionString = process.env.DATABASE_URL || 'postgresql://cleorf:devpass@localhost:5432/cleorf';
 const client = postgres(connectionString);

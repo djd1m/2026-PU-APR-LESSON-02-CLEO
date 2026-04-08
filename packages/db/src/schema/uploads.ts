@@ -1,5 +1,5 @@
 import { pgTable, uuid, varchar, integer, date, timestamp, pgEnum } from 'drizzle-orm/pg-core';
-import { users } from './users.js';
+import { users } from './users';
 
 export const bankFormatEnum = pgEnum('bank_format', ['tinkoff', 'sberbank', 'alfa', 'generic']);
 export const uploadStatusEnum = pgEnum('upload_status', ['parsing', 'analyzing', 'complete', 'error']);

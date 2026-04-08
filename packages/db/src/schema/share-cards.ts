@@ -1,6 +1,6 @@
 import { pgTable, uuid, text, varchar, integer, timestamp } from 'drizzle-orm/pg-core';
-import { users } from './users.js';
-import { analyses } from './analyses.js';
+import { users } from './users';
+import { analyses } from './analyses';
 
 export const shareCards = pgTable('share_cards', {
   id: uuid('id').defaultRandom().primaryKey(),
